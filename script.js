@@ -3,8 +3,8 @@ var pengirim = "Someone❤️";
 var musik = "musikku.mp3";
 var ucapan = "Hai, kenalan dong...";  // Pesan untuk notifikasi pertama
 var pesanKedua = "Di tahun kehidupan kamu yang ke-24 ini, aku mau bilang terimakasih karna sudah hadir di keh"; // Pesan untuk notifikasi kedua
-var background1 = "bg.png";
-var background2 = "bg.png";
+var background1 = "bgbubbles.png";
+var background2 = "bgbubbles.png";
 var noWhatsapp = "6281255173749";
 var pesanWhatsapp = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.";
 
