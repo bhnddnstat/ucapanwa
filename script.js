@@ -1,10 +1,10 @@
 // Custom variables
 const CONFIG = {
-    pengirim: "Someone❤️",
-    musik: "musikku.mp3",
+    pengirim: "BhnddnStat❤️",
+    musik: "musikwa.mp3",
     notifSound: "notif.mp3",
-    ucapan: "Hai, kenalan dong...",
-    pesanKedua: "Di tahun kehidupan kamu yang ke-24 ini, aku mau bilang terimakasih karna sudah hadir di keh",
+    ucapan: "Hai, mau denger aku nyanyi ga 😎😂...",
+    pesanKedua: "Sambil denger aku nyanyi, aku cuma mau bilang apapun nanti hasilnya, banggalah terhadap setiap proses yang kamu lalui. Hargai dirimu yg terus berusaha menjadi lebih baik dan ucapkan terimakasih pada dirimu yang tidak pernah menyerah 😊",
     background1: "bgucapanwa.png",
     background2: "bgucapanwa.png",
     noWhatsapp: "6281255173749",
@@ -63,7 +63,9 @@ function customWhatsApp() {
 
     // Handle notifications display
     function playFirstNotification() {
-        audio.play().catch(console.error);
+        setTimeout(() => {  // Tambahkan delay 1 detik sebelum memutar musik
+            audio.play().catch(console.error);
+        }, 1000);
         notifSound.play().catch(console.error);
         hilang1.style.display = 'none';
         hilang2.style.display = 'inline-block';

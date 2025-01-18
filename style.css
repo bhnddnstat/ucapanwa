@@ -151,6 +151,50 @@
     font-size: 1.1em; 
   } 
   
+
+  /* Untuk tampilan ponsel */
+.hilang1 {
+    text-align: center; /* Tengah elemen */
+}
+
+.hilang1 .sticker-gif {
+    width: 130px; /* Sesuaikan ukuran */
+    height: auto;
+    padding: 1px;
+}
+
+.hilang1 .caption {
+    display: block;
+    color: rgb(36, 36, 36); 
+    padding: 5px 10px;
+    font-size: 16px; 
+    font-weight: bold; 
+    box-shadow: 1px 1px 10px rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+/* Untuk tampilan desktop */
+@media (min-width: 601px) {
+    .hilang1 .sticker-gif {
+        width: 80px; /* Sesuaikan ukuran */
+        height: auto;
+        padding: 1px;
+    }
+
+    .hilang1 .caption {
+        display: block;
+        color: rgb(36, 36, 36); 
+        padding: 5px 10px;
+        font-size: 14px; 
+        font-weight: bold; 
+        box-shadow: 1px 1px 10px rgb(0, 0, 0);
+        border-radius: 10px;
+    }
+}
+  
+  
+
+
   /* Button Style */
   .btn-mulai { 
     position: absolute; 
@@ -183,8 +227,21 @@
     color: white; 
     background: #23a542;
     position: relative;
-    top: 10px;
+    top: 35px;
   } 
+
+/* Untuk tampilan desktop */
+@media (min-width: 601px) {
+    /* Tampilkan elemen di desktop dan sesuaikan gaya */
+    .btn-mulai p.kirimWA { 
+        display: none; 
+    color: white; 
+    background: #23a542;
+    position: relative;
+    top: 170px;
+    }
+}
+
   
   /* Animations */
   @keyframes goyang { 
