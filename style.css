@@ -155,6 +155,7 @@
   /* Untuk tampilan ponsel */
 .hilang1 {
     text-align: center; /* Tengah elemen */
+    margin-bottom: 30px;
 }
 
 .hilang1 .sticker-gif {
@@ -220,6 +221,7 @@
   
   .btn-mulai p.hilang2 { 
     display: none; 
+    padding: 10px;
   } 
   
   .btn-mulai p.kirimWA { 
@@ -228,6 +230,7 @@
     background: #23a542;
     position: relative;
     top: 35px;
+    padding: 10px;
   } 
 
 /* Untuk tampilan desktop */
