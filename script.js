@@ -1,25 +1,42 @@
 // Custom variables
-var pengirim = "Someone❤️";
-var musik = "musikku.mp3";
-var ucapan = "Hai, kenalan dong...";  // Pesan untuk notifikasi pertama
-var pesanKedua = "Di tahun kehidupan kamu yang ke-24 ini, aku mau bilang terimakasih karna sudah hadir di keh"; // Pesan untuk notifikasi kedua
-var background1 = "bgbubbles.png";
-var background2 = "bgbubbles.png";
-var noWhatsapp = "6281255173749";
-var pesanWhatsapp = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.";
+const CONFIG = {
+    pengirim: "Someone❤️",
+    musik: "musikku.mp3",
+    notifSound: "notif.mp3",
+    ucapan: "Hai, kenalan dong...",
+    pesanKedua: "Di tahun kehidupan kamu yang ke-24 ini, aku mau bilang terimakasih karna sudah hadir di keh",
+    background1: "bgbubbles.png",
+    background2: "bgbubbles.png",
+    noWhatsapp: "6281255173749",
+    pesanWhatsapp: "Hai..."
+};
+
+// Setup Audio Function
+function setupAudio() {
+    const audio = new Audio(CONFIG.musik);
+    const notifSound = new Audio(CONFIG.notifSound);
+    
+    // Handle audio loading errors
+    audio.addEventListener('error', () => {
+        console.error('Gagal memuat file musik');
+    });
+    
+    notifSound.addEventListener('error', () => {
+        console.error('Gagal memuat file notifikasi');
+    });
+    
+    return { audio, notifSound };
+}
 
 // Main function
 function customWhatsApp() {
     // Audio setup
-    const audio = new Audio(musik);
+    const { audio, notifSound } = setupAudio();
     audio.loop = true;
-    
-    // Notifikasi sound setup
-    const notifSound = new Audio('notif.mp3'); // Tambahkan file suara notifikasi WhatsApp
 
     // Background setup
-    document.querySelector('.background1').style.backgroundImage = `url(${background1})`;
-    document.querySelector('.background2').style.backgroundImage = `url(${background2})`;
+    document.querySelector('.background1').style.backgroundImage = `url(${CONFIG.background1})`;
+    document.querySelector('.background2').style.backgroundImage = `url(${CONFIG.background2})`;
 
     // Get elements
     const btnMulai = document.querySelector('.btn-mulai');
@@ -34,54 +51,76 @@ function customWhatsApp() {
     const pesan2 = document.querySelector('.notif2 .isi p');
 
     // Set sender name and messages
-    nama1.innerHTML = pengirim;
-    nama2.innerHTML = pengirim;
-    pesan1.innerHTML = ucapan;
-    pesan2.innerHTML = pesanKedua;
+    nama1.innerHTML = CONFIG.pengirim;
+    nama2.innerHTML = CONFIG.pengirim;
+    pesan1.innerHTML = CONFIG.ucapan;
+    pesan2.innerHTML = CONFIG.pesanKedua;
 
     // Hide loading screen after 1 second
     setTimeout(() => {
         document.querySelector('.loading').style.display = 'none';
     }, 1000);
 
-    // Initialize click events
-    btnMulai.addEventListener('click', function() {
+    // Handle notifications display
+    function playFirstNotification() {
+        audio.play().catch(console.error);
+        notifSound.play().catch(console.error);
+        hilang1.style.display = 'none';
+        hilang2.style.display = 'inline-block';
+        notif1.style.transform = 'translateX(0)';
+    }
+
+    function playSecondNotification() {
+        notifSound.play().catch(console.error);
+        hilang2.style.display = 'none';
+        kirimWA.style.display = 'inline-block';
+        notif2.style.transform = 'translateX(0)';
+        notif2.classList.add('kelip'); // Tambahkan efek kelip ke notif2
+    }
+
+    function openWhatsApp() {
+        const url = `https://api.whatsapp.com/send?phone=${CONFIG.noWhatsapp}&text=${encodeURIComponent(CONFIG.pesanWhatsapp)}`;
+        window.open(url, '_blank');
+    }
+
+    // Handle button clicks
+    function handleClick() {
         if (hilang1.style.display !== 'none') {
-            // First click
-            audio.play();
-            notifSound.play(); // Mainkan suara notifikasi
-            hilang1.style.display = 'none';
-            hilang2.style.display = 'inline-block';
-            notif1.style.transform = 'translateX(0)';
+            playFirstNotification();
         } else if (hilang2.style.display !== 'none') {
-            // Second click
-            notifSound.play(); // Mainkan suara notifikasi
-            hilang2.style.display = 'none';
-            kirimWA.style.display = 'inline-block';
-            notif2.style.transform = 'translateX(0)';
+            playSecondNotification();
         } else {
-            // Final click - Open WhatsApp
-            let pesan = pesanWhatsapp;
-            window.open(`https://api.whatsapp.com/send?phone=${noWhatsapp}&text=${encodeURIComponent(pesan)}`);
+            openWhatsApp();
         }
-    });
+    }
 
-    // Update clock
+    btnMulai.addEventListener('click', handleClick);
+
+    // Update clock function
     function updateClock() {
-        const now = new Date();
-        const jam = document.getElementById('jam');
-        const tgl = document.querySelector('.tgl');
-        
-        // Update time
-        jam.textContent = now.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false
-        });
-
-        // Update date
-        const options = { weekday: 'long', day: 'numeric', month: 'long' };
-        tgl.textContent = now.toLocaleDateString('en-US', options);
+        try {
+            const now = new Date();
+            const jam = document.getElementById('jam');
+            const tgl = document.querySelector('.tgl');
+            
+            // Update time
+            const timeOptions = { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                hour12: false 
+            };
+            jam.textContent = now.toLocaleTimeString('en-US', timeOptions);
+            
+            // Update date
+            const dateOptions = { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long' 
+            };
+            tgl.textContent = now.toLocaleDateString('en-US', dateOptions);
+        } catch (error) {
+            console.error('Error updating clock:', error);
+        }
     }
 
     // Update clock every second
@@ -89,7 +128,7 @@ function customWhatsApp() {
     updateClock(); // Initial call
 }
 
-// Start everything
+// Start everything when window loads
 window.addEventListener('load', customWhatsApp);
 
 // Disable right click

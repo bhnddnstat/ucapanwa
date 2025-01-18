@@ -46,7 +46,6 @@
     top: 0; 
     left: calc(50vw - 29.5vh); 
     background-color: #121212; 
-    background-image: url("https://dekatutorial.github.io/bg2_mylove.jpg"); 
     background-size: cover; 
     filter: brightness(70%); 
   } 
@@ -59,7 +58,6 @@
     top: 0; 
     left: calc(50vw - 29.5vh); 
     background-color: #c93434; 
-    background-image: url("https://dekatutorial.github.io/bg1_mylove.jpg"); 
     background-size: cover; 
     filter: brightness(70%); 
   } 
@@ -328,10 +326,10 @@
   font-weight: bold;
 }
 
-.nama1 p {
-  margin-top: 1rem;
+.nama1 p, .nama2 p {
+    margin-top: 1rem;
+    font-weight: bold;
 }
-
 
 
 /* Background Styles */
@@ -343,7 +341,7 @@
     top: 0; 
     left: calc(50vw - 29.5vh); 
     background-color: #121212; 
-    background-image: url("https://raw.githubusercontent.com/bhnddnstat/ucapanwa/main/bgbubbles.png"); /* Perbaiki path */
+    background-image: url("bgbubbles.png"); /* Perbaiki path */
     background-size: cover; 
     background-position: center;  /* Tambahkan ini */
     background-repeat: no-repeat; /* Tambahkan ini */
@@ -359,7 +357,7 @@
     top: 0; 
     left: calc(50vw - 29.5vh); 
     background-color: #121212; 
-    background-image: url("https://raw.githubusercontent.com/bhnddnstat/ucapanwa/main/bgbubbles.png"); /* Perbaiki path */
+    background-image: url("bgbubbles.png"); /* Perbaiki path */
     background-size: cover;
     background-position: center;  /* Tambahkan ini */
     background-repeat: no-repeat; /* Tambahkan ini */
