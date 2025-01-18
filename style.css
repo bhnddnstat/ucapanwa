@@ -155,7 +155,7 @@
   /* Untuk tampilan ponsel */
 .hilang1 {
     text-align: center; /* Tengah elemen */
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .hilang1 .sticker-gif {
@@ -229,7 +229,7 @@
     color: white; 
     background: #23a542;
     position: relative;
-    top: 35px;
+    top: 50px;
     padding: 10px;
   } 
 
