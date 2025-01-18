@@ -5,8 +5,8 @@ const CONFIG = {
     notifSound: "notif.mp3",
     ucapan: "Hai, kenalan dong...",
     pesanKedua: "Di tahun kehidupan kamu yang ke-24 ini, aku mau bilang terimakasih karna sudah hadir di keh",
-    background1: "bgbubbles.png",
-    background2: "bgbubbles.png",
+    background1: "bgucapanwa.png",
+    background2: "bgucapanwa.png",
     noWhatsapp: "6281255173749",
     pesanWhatsapp: "Hai..."
 };
